@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./banner.css";
-import axios from "../axios";
-import requests from "../requests";
+import axios from "../../axios";
+import requests from "../../requests";
 
 const Banner = () => {
 	const [movie, setMovie] = useState([]);
@@ -11,11 +11,18 @@ const Banner = () => {
 			try {
 				const res = await axios.get(requests.fetchNetflixOriginals);
 
-				setMovie(
+				let chosenMovie =
 					res.data.results[
 						Math.floor(Math.random() * res.data.results.length - 1)
-					]
-				);
+					];
+				if (chosenMovie.backdrop_path === "") {
+					chosenMovie =
+						res.data.results[
+							Math.floor(Math.random() * res.data.results.length - 1)
+						];
+				}
+
+				setMovie(chosenMovie);
 				return res; // async function must return something
 			} catch (error) {
 				console.log(error);
@@ -47,7 +54,7 @@ const Banner = () => {
 				</div>
 
 				<h1 className="banner__description">
-					{truncate(`${movie?.overview}`, 200)}
+					{truncate(`${movie?.overview}`, 200) || "Awesome Movie"}
 				</h1>
 			</div>
 
