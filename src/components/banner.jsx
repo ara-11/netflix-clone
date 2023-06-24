@@ -12,18 +12,20 @@ const Banner = () => {
 				const res = await axios.get(requests.fetchNetflixOriginals);
 
 				setMovie(
-					res.data.results[Math.floor(Math.random() * res.data.results.length)]
+					res.data.results[
+						Math.floor(Math.random() * res.data.results.length - 1)
+					]
 				);
+				return res; // async function must return something
 			} catch (error) {
 				console.log(error);
 			}
 		}
 		fetchData();
-		return res; // async function must return something
 	}, []);
 	// to truncate the description if it too long
 	function truncate(string, n) {
-		return string?.length > n ? string.substring(0, n - 1) : string;
+		return string?.length > n ? string.substring(0, n - 1) + "..." : string;
 	}
 
 	return (
@@ -45,7 +47,7 @@ const Banner = () => {
 				</div>
 
 				<h1 className="banner__description">
-					{truncate(`${movie.overview}`, 200)}
+					{truncate(`${movie?.overview}`, 200)}
 				</h1>
 			</div>
 

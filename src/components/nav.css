@@ -10,7 +10,7 @@
 	transition: all 0.6s ease-in;
 }
 .nav__black {
-	background-color: black;
+	background-color: rgba(0, 0, 0, 0.7);
 }
 
 .nav__contents {
