@@ -19,7 +19,7 @@ const Login = () => {
 			</div>
 			<div className="login__gradient" />
 
-			<div className="login__body">
+			<div className={`login__body ${login && "login__sign"}`}>
 				{login ? (
 					<SignUp />
 				) : (

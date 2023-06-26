@@ -57,6 +57,10 @@
 	transform: translate(-50%);
 	width: 80%;
 }
+
+.login__sign {
+	margin-top: -45px;
+}
 .login__body > h1 {
 	font-size: 3.125rem;
 	margin-bottom: 20px;
