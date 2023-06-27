@@ -1,11 +1,19 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./signUp.css";
 import { auth } from "../../firebase";
 
-const SignUp = () => {
+const SignUp = ({ email }) => {
 	const emailRef = useRef("");
 	const passwordRef = useRef("");
 	const [errorMessage, setErrorMessage] = useState("");
+
+	useEffect(() => {
+		if (email) {
+			passwordRef.current.focus();
+		} else {
+			emailRef.current.focus();
+		}
+	}, []);
 
 	// To register new users
 	const register = (e) => {
@@ -50,7 +58,12 @@ const SignUp = () => {
 						{errorMessage.substring(9, errorMessage.length)}
 					</p>
 				)}
-				<input placeholder="Email" type="email" ref={emailRef} />
+				<input
+					placeholder={`${email}` || `Email`}
+					type="email"
+					ref={emailRef}
+					defaultValue={email}
+				/>
 				<input placeholder="Password" type="password" ref={passwordRef} />
 				<button type="submit" onClick={signIn}>
 					Sign In

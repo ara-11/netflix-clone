@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
-import HomeScreen from "./components/homeScreen/homeScreen";
-import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "./App.css";
+import HomeScreen from "./components/homeScreen/homeScreen";
 import Login from "./components/registration/login";
+import Profile from "./components/profile/profile";
 import { auth } from "./firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { logIn, logOut } from "./features/cart/userSlice";
 
 function App() {
-	const user = useSelector((state) => state.user);
+	const { user } = useSelector((state) => state.user);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -30,11 +31,10 @@ function App() {
 		});
 		// return function to clean up the memory
 		return () => unSubscribe;
-	}, []);
+	}, [dispatch]);
+
 	return (
 		<div className="app">
-			{/* <HomeScreen /> */}
-
 			<Router>
 				{!user ? (
 					<Login />
@@ -42,6 +42,7 @@ function App() {
 					<Routes>
 						<Route path="/" element={<HomeScreen />} />
 						<Route path="/login" element={<Login />} />
+						<Route path="/profile" element={<Profile />} />
 					</Routes>
 				)}
 			</Router>

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./login.css";
 import SignUp from "./signUp";
 
 const Login = () => {
 	const [login, setLogin] = useState(false);
+	const userEmailRef = useRef("");
 
 	return (
 		<div className="login">
@@ -21,7 +22,7 @@ const Login = () => {
 
 			<div className={`login__body ${login && "login__sign"}`}>
 				{login ? (
-					<SignUp />
+					<SignUp email={userEmailRef.current.value} />
 				) : (
 					<>
 						<h1>Unlimited films, Tv programmes and more.</h1>
@@ -33,7 +34,11 @@ const Login = () => {
 
 						<div className="login__input">
 							<form>
-								<input type="email" placeholder="Email Address" />
+								<input
+									type="email"
+									placeholder="Email Address"
+									ref={userEmailRef}
+								/>
 								<button className="login__start" onClick={() => setLogin(true)}>
 									GET STARTED
 								</button>
