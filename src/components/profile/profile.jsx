@@ -2,8 +2,8 @@ import React from "react";
 import "./profile.css";
 import Nav from "../homeScreen/nav";
 import { useSelector, useDispatch } from "react-redux";
-import { logOut } from "../../features/cart/userSlice";
 import { auth } from "../../firebase";
+import Plans from "./plans";
 
 function Profile() {
 	const { user } = useSelector((state) => state.user);
@@ -22,6 +22,7 @@ function Profile() {
 						<h2>{user.email}</h2>
 						<div className="profile__plans">
 							<h3>Plans</h3>
+							<Plans />
 							<button
 								onClick={() => auth.signOut()}
 								className="profile__signout"
