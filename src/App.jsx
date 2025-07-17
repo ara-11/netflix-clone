@@ -12,6 +12,26 @@ function App() {
 	const { user } = useSelector((state) => state.user);
 	const dispatch = useDispatch();
 
+/*	useEffect(() => {
+  const unSubscribe = auth.onAuthStateChanged((userAuth) => {
+    if (userAuth) {
+      dispatch(
+        logIn({
+          uid: userAuth.uid,
+          email: userAuth.email || "anonymous",
+          isAnonymous: userAuth.isAnonymous,
+        })
+      );
+    } else {
+      dispatch(logOut());
+    }
+  });
+
+  return () => unSubscribe();
+}, [dispatch]);
+
+*/
+
 	useEffect(() => {
 		// to check if the user is already signed in
 		// This onAuthStateChanged is a listener that checks if the user is logged in or not
@@ -32,6 +52,7 @@ function App() {
 		// return function to clean up the memory
 		return () => unSubscribe;
 	}, [dispatch]);
+	
 
 	return (
 		<div className="app">

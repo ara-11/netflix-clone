@@ -93,6 +93,7 @@
 }
 
 .login__start {
+  margin-top: 20px;
 	padding: 16px;
 	font-size: 1rem;
 	color: #fff;
@@ -100,6 +101,15 @@
 	border: none;
 	font-weight: 600;
 	cursor: pointer;
-	margin-left: 15px;
 	border-radius: 5px;
+}
+.login__skip {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
 }

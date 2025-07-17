@@ -1,6 +1,18 @@
 import React, { useState, useRef } from "react";
 import "./login.css";
 import SignUp from "./signUp";
+import { auth } from "../../firebase"; // adjust path as needed
+
+const signInAnonymously = () => {
+  auth
+    .signInAnonymously()
+    .then(() => {
+      console.log("Signed in anonymously");
+    })
+    .catch((error) => {
+      console.error("Anonymous sign-in error:", error);
+    });
+};
 
 const Login = () => {
 	const [login, setLogin] = useState(false);
@@ -39,9 +51,15 @@ const Login = () => {
 									placeholder="Email Address"
 									ref={userEmailRef}
 								/>
+
+								<div>
 								<button className="login__start" onClick={() => setLogin(true)}>
 									GET STARTED
 								</button>
+
+								</div>
+								
+
 							</form>
 						</div>
 					</>
