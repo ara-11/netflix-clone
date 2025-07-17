@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./plans.css";
-import db from "../../firebase";
-import { prices } from "../../prices";
-import { loadStripe } from "@stripe/stripe-js";
+import { db, auth } from '../../firebase'; // ✅ correct path
+//import { prices } from "../../prices";
+//import { loadStripe } from "@stripe/stripe-js";
 import { useSelector } from "react-redux";
 
 const Plans = () => {
