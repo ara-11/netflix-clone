@@ -45,7 +45,7 @@ This is a Netflix clone application built using Vite and React. It replicates th
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/Mash14/Netflix-Clone.git
+   git clone https://github.com/ara-11/netflix-clone.git
    ```
 
 2. Navigate to the project directory:
@@ -87,8 +87,8 @@ The author of this project was Alan Macharia
 
 You can reach the developer by:
 
-- Email: mashalonzo741@gmail.com
-- Tel: 0704485919
+- Email:
+- Tel: 
 
 ## Known Bugs
 
