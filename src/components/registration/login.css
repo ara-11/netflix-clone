@@ -1,115 +1,70 @@
 .login {
-	position: relative;
-	height: 100%;
-	background: url("https://wpassets.brainstation.io/app/uploads/2017/04/13100509/Netflix-Background.jpg");
-	background-size: cover;
-	background-repeat: no-repeat;
-	/* background-position: center; */
-	width: 100%;
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    background: url("https://wpassets.brainstation.io/app/uploads/2017/04/13100509/Netflix-Background.jpg") center center / cover no-repeat;
 }
 
 .login__gradient {
-	width: 100%;
-	z-index: 1;
-	height: 100vh;
-	background: rgba(0, 0, 0, 0.4);
-	/* give the shadow effect */
-	background-image: linear-gradient(
-		to top,
-		rgba(0, 0, 0, 0.8) 0,
-		rgba(0, 0, 0, 0) 60%,
-		rgba(0, 0, 0, 0.8) 100%
-	);
-}
-
-.login__logo {
-	position: fixed;
-	left: 0;
-	width: 150px;
-	object-fit: contain;
-	padding-left: 20px;
-}
-
-.login__button {
-	position: fixed;
-	right: 20px;
-	top: 20px;
-	padding: 10px 20px;
-	font-size: 1rem;
-	color: #fff;
-	background-color: #e50914;
-	font-weight: 600;
-	border: none;
-	cursor: pointer;
-	border-radius: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    background-image: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(0, 0, 0, 0.2) 60%,
+        rgba(0, 0, 0, 0.8) 100%
+    );
 }
 
 .login__body {
-	z-index: 1;
-	color: #fff;
-	padding: 20px;
-	position: absolute;
-	top: 30%;
-	/* margin-left: auto;
-	margin-right: auto; */
-	text-align: center;
-	left: 50%;
-	transform: translate(-50%);
-	width: 80%;
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    text-align: center;
+    padding: 60px 20px;
+    max-width: 700px;
+    margin: auto;
+    top: 25vh;
 }
 
-.login__sign {
-	margin-top: -45px;
-}
 .login__body > h1 {
-	font-size: 3.125rem;
-	margin-bottom: 20px;
+    font-size: 3rem;
+    margin-bottom: 20px;
 }
+
 .login__body > h2 {
-	font-size: 2rem;
-	margin-bottom: 30px;
-	font-weight: 400;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: 400;
 }
+
 .login__body > h3 {
-	font-size: 1.3rem;
-	font-weight: 400;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    font-weight: 400;
 }
 
 .login__input {
-	margin: 20px;
-}
-
-.login__input > form > input {
-	padding: 10px;
-	outline-width: 0;
-	height: 30px;
-	width: 50%;
-	border: 1px solid rgba(255, 255, 255, 0.5);
-	max-width: 380px;
-	border-radius: 5px;
-	background-color: rgba(0, 0, 0, 0.6);
-	color: white;
-	font-size: 16px;
+    display: flex;
+    justify-content: center;
 }
 
 .login__start {
-  margin-top: 20px;
-	padding: 16px;
-	font-size: 1rem;
-	color: #fff;
-	background-color: #e50914;
-	border: none;
-	font-weight: 600;
-	cursor: pointer;
-	border-radius: 5px;
+    padding: 14px 32px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #e50914;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
-.login__skip {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #ffffff;
-  color: rgb(0, 0, 0);
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 4px;
+
+.login__start:hover {
+    background-color: #f6121d;
 }

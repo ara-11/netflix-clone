@@ -1,72 +1,43 @@
-import React, { useState, useRef } from "react";
+// Login.jsx
+import React from "react";
 import "./login.css";
-import SignUp from "./signUp";
-import { auth } from "../../firebase"; // adjust path as needed
-
-const signInAnonymously = () => {
-  auth
-    .signInAnonymously()
-    .then(() => {
-      console.log("Signed in anonymously");
-    })
-    .catch((error) => {
-      console.error("Anonymous sign-in error:", error);
-    });
-};
+import { useNavigate } from "react-router-dom"; // 👈 for page redirection
 
 const Login = () => {
-	const [login, setLogin] = useState(false);
-	const userEmailRef = useRef("");
+  const navigate = useNavigate();
 
-	return (
-		<div className="login">
-			<div className="login__background">
-				<img
-					src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png"
-					alt=""
-					className="login__logo"
-				/>
-				<button className="login__button" onClick={() => setLogin(true)}>
-					Sign In
-				</button>
-			</div>
-			<div className="login__gradient" />
+  const handleStart = (e) => {
+    e.preventDefault(); // prevent form reload
+    // 🚀 Redirect directly to homepage
+    navigate("/homeScreen");
+  };
 
-			<div className={`login__body ${login && "login__sign"}`}>
-				{login ? (
-					<SignUp email={userEmailRef.current.value} />
-				) : (
-					<>
-						<h1>Unlimited films, Tv programmes and more.</h1>
-						<h2>Watch anywhere. Cancel at any time.</h2>
-						<h3>
-							Ready to watch? Enter your email to create or restart your
-							membership
-						</h3>
+  return (
+    <div className="login">
+      <div className="login__background">
+        <img
+          src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png"
+          alt="Netflix Logo"
+          className="login__logo"
+        />
+      </div>
 
-						<div className="login__input">
-							<form>
-								<input
-									type="email"
-									placeholder="Email Address"
-									ref={userEmailRef}
-								/>
+      <div className="login__gradient" />
 
-								<div>
-								<button className="login__start" onClick={() => setLogin(true)}>
-									GET STARTED
-								</button>
+      <div className="login__body">
+        <h1>Unlimited films, TV programmes and more.</h1>
+        <h2>Watch anywhere. Any time.</h2>
 
-								</div>
-								
-
-							</form>
-						</div>
-					</>
-				)}
-			</div>
-		</div>
-	);
+        <div className="login__input">
+          <form onSubmit={handleStart}>
+            <button className="login__start" type="submit">
+              GET STARTED
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Login;

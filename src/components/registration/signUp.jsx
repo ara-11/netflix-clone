@@ -7,8 +7,8 @@ import {
 } from "firebase/auth";
 
 const SignUp = ({ email }) => {
-  const emailRef = useRef("");
-  const passwordRef = useRef("");
+  const emailRef = useRef();
+  const passwordRef = useRef();
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
@@ -17,62 +17,81 @@ const SignUp = ({ email }) => {
     } else {
       emailRef.current.focus();
     }
-  }, []);
+  }, [email]);
 
-  const register = (e) => {
+  const handleSignIn = async (e) => {
     e.preventDefault();
-    createUserWithEmailAndPassword(
-      auth,
-      emailRef.current.value,
-      passwordRef.current.value
-    )
-      .then((authUser) => {
-        console.log("Signed up:", authUser);
-        setErrorMessage("");
-      })
-      .catch((error) => {
-        setErrorMessage(error.message);
-      });
+    const emailValue = emailRef.current?.value?.trim();
+    const passwordValue = passwordRef.current?.value;
+
+    if (!emailValue || !passwordValue) {
+      setErrorMessage("Please enter both email and password.");
+      return;
+    }
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        emailValue,
+        passwordValue
+      );
+      console.log("Signed in:", userCredential.user);
+      setErrorMessage("");
+    } catch (error) {
+      setErrorMessage(error.message);
+    }
   };
 
-  const signIn = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(
-      auth,
-      emailRef.current.value,
-      passwordRef.current.value
-    )
-      .then((authUser) => {
-        console.log("Signed in:", authUser);
-      })
-      .catch((error) => {
-        setErrorMessage(error.message);
-      });
+    const emailValue = emailRef.current?.value?.trim();
+    const passwordValue = passwordRef.current?.value;
+
+    if (!emailValue || !passwordValue) {
+      setErrorMessage("Please enter both email and password.");
+      return;
+    }
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        emailValue,
+        passwordValue
+      );
+      console.log("Signed up:", userCredential.user);
+      setErrorMessage("");
+    } catch (error) {
+      setErrorMessage(error.message);
+    }
   };
 
   return (
     <div className="signup">
-      <form>
+      <form onSubmit={handleSignIn}>
         <h1>Sign In</h1>
         {errorMessage && (
           <p className="signup__error">
-            {errorMessage.substring(9)}
+            {errorMessage.replace("Firebase: ", "")}
           </p>
         )}
         <input
-          placeholder={`${email}` || `Email`}
+          placeholder="Email"
           type="email"
           ref={emailRef}
           defaultValue={email}
+          required
         />
-        <input placeholder="Password" type="password" ref={passwordRef} />
-        <button type="submit" onClick={signIn}>
-          Sign In
-        </button>
+        <input
+          placeholder="Password"
+          type="password"
+          ref={passwordRef}
+          required
+        />
+        <button type="submit">Sign In</button>
 
         <h4>
           <span className="signup__gray">New to Netflix? </span>
-          <span className="signup__link" onClick={register}>
+          <span className="signup__link" onClick={handleRegister}>
             Sign Up Now
           </span>
         </h4>
