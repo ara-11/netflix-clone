@@ -29,8 +29,6 @@ This is a Netflix clone application built using Vite and React. It replicates th
 
 ![Log In / Sign Up Page ](/src/assets/login.png)
 
-![Subscription](/src/assets/subscription.png)
-
 ## Getting Started
 
 ### Prerequisites
@@ -62,13 +60,13 @@ This is a Netflix clone application built using Vite and React. It replicates th
 
 4. Create a .env file in the project root directory and add the following environment variables:
 
-   VITE_TMDB_API_KEY=434d36d72e9ffc46e6fc885a62af8500
-   VITE_FIREBASE_API_KEY=AIzaSyBaiaf2aWS8YYvGtEyR9IhlGyogLNEAzA0
-   VITE_FIREBASE_AUTH_DOMAIN=netflix-clone-b2960.firebaseapp.com
-   VITE_FIREBASE_PROJECT_ID=netflix-clone-b2960
-   VITE_FIREBASE_STORAGE_BUCKET=netflix-clone-b2960.firebasestorage.app
-   VITE_FIREBASE_MESSAGING_SENDER_ID=157002289085
-   VITE_FIREBASE_APP_ID=1:157002289085:web:df5a43ca9544e123d98cd4
+   VITE_TMDB_API_KEY=YOUR_TMDB_API_KEY
+   VITE_FIREBASE_API_KEY=YOUR_FIREBASE_API_KEY
+   VITE_FIREBASE_AUTH_DOMAIN=YOUR_FIREBASE_AUTH_DOMAIN
+   VITE_FIREBASE_PROJECT_ID=YOUR_FIREBASE_PROJECT_ID
+   VITE_FIREBASE_STORAGE_BUCKET=YOUR_FIREBASE_STORAGE_BUCKET
+   VITE_FIREBASE_MESSAGING_SENDER_ID=YOUR_FIREBASE_MESSAGING_SENDER_ID
+   VITE_FIREBASE_APP_ID=YOUR_FIREBASE_APP_ID
    VITE_STRIPE_PUBLIC_KEY=YOUR_STRIPE_PUBLIC_KEY
 
    
@@ -80,10 +78,6 @@ This is a Netflix clone application built using Vite and React. It replicates th
    ```
 
 6. Open the app in your browser at http://localhost:3000.
-
-## Developer's Details
-
-The author of this project was Alan Macharia
 
 ## Contact information
 
@@ -104,4 +98,3 @@ Contributions are welcome! If you have any suggestions, bug reports, or feature 
 
 The license information can be found here: [MIT-License](https://opensource.org/licenses/MIT)
 
-Copyright (c)_28/06/2023\_\_Alan Macharia_
