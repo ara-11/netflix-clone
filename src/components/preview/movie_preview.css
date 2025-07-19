@@ -1,0 +1,7 @@
+.preview {
+  height: 100vh;
+  color: white;
+  background-color: #201e1e;
+  padding-top: 36px; /* spacing below Nav */
+  z-index: 200;
+}
